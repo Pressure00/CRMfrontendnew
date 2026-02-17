@@ -82,7 +82,11 @@ export default function AdminCompanyDetailPage() {
           <button onClick={() => navigate('/admin/companies')} className="win-btn-secondary"><HiOutlineArrowLeft className="w-4 h-4" /> Назад</button>
           <button onClick={() => setShowMessage(true)} className="win-btn-secondary"><HiOutlineMail className="w-4 h-4" /> Сообщение</button>
           <button onClick={handleBlock} disabled={blocking} className="win-btn-secondary">
-            {company.is_blocked ? <><HiOutlineCheck className="w-4 h-4" /> Разблокировать</> : <><HiOutlineBan className="w-4 h-4" /> Заблокировать</>}
+            {Boolean(company.is_blocked) === true ? (
+              <><HiOutlineCheck className="w-4 h-4" /> Разблокировать</>
+            ) : (
+              <><HiOutlineBan className="w-4 h-4" /> Заблокировать</>
+            )}
           </button>
           <button onClick={() => setShowDelete(true)} className="win-btn-danger"><HiOutlineTrash className="w-4 h-4" /> Удалить</button>
         </div>}
