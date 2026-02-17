@@ -11,7 +11,6 @@ const apiClient: AxiosInstance = axios.create({
   timeout: 30000,
 })
 
-// Request interceptor — attach JWT token
 apiClient.interceptors.request.use(
   (config: InternalAxiosRequestConfig) => {
     const token = localStorage.getItem('access_token')
@@ -23,14 +22,12 @@ apiClient.interceptors.request.use(
   (error) => Promise.reject(error)
 )
 
-// Response interceptor — handle errors
 apiClient.interceptors.response.use(
   (response) => response,
   (error: AxiosError<{ detail?: string | Array<{ msg: string }> }>) => {
     if (error.response) {
       const { status, data } = error.response
 
-      // Extract error message
       let message = 'Произошла ошибка'
       if (data?.detail) {
         if (typeof data.detail === 'string') {
@@ -42,7 +39,6 @@ apiClient.interceptors.response.use(
 
       switch (status) {
         case 401:
-          // Token expired or invalid
           localStorage.removeItem('access_token')
           localStorage.removeItem('user')
           if (window.location.pathname !== '/login' && 

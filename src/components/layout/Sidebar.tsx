@@ -8,16 +8,13 @@ import {
   HiOutlineClipboardCheck,
   HiOutlineFolder,
   HiOutlineUserGroup,
-  HiOutlineOfficeBuildingIcon,
+  HiOutlineOfficeBuilding,
   HiOutlineUsers,
   HiOutlineClipboardList,
   HiOutlineCog,
   HiOutlineLogout,
   HiOutlineChevronLeft,
   HiOutlineChevronRight,
-} from 'react-icons/hi'
-import {
-  HiOutlineOfficeBuilding,
 } from 'react-icons/hi'
 
 interface SidebarProps {
@@ -39,7 +36,7 @@ export default function Sidebar({ collapsed, onToggle }: SidebarProps) {
   }
 
   // Build menu based on activity type and role
-  const menuItems = []
+  const menuItems: { path: string; icon: typeof HiOutlineViewGrid; label: string }[] = []
 
   menuItems.push({ path: '/dashboard', icon: HiOutlineViewGrid, label: 'Дашборд' })
 
