@@ -1,0 +1,22 @@
+{
+  "appName": "Declarant CRM",
+  "logo": "/logo.svg",
+  "favicon": "/favicon.ico",
+  "loginBackground": "/login-bg.jpg",
+  "defaultAvatar": "/default-avatar.png",
+  "notificationSound": "/notification.mp3",
+  "theme": {
+    "primaryColor": "#0078D4",
+    "primaryHover": "#106EBE",
+    "accentColor": "#0067C0",
+    "successColor": "#107C10",
+    "warningColor": "#FF8C00",
+    "dangerColor": "#D13438",
+    "sidebarBg": "#202020",
+    "sidebarText": "#FFFFFF",
+    "sidebarHover": "#333333",
+    "headerBg": "#F3F3F3",
+    "bodyBg": "#F5F5F5",
+    "cardBg": "#FFFFFF"
+  }
+}
