@@ -57,10 +57,14 @@ export default function LoginPage() {
       const res = await authApi.adminLogin({ login: email, password, code })
       const { access_token } = res.data
 
+      // Set token immediately so getMe can use it
+      localStorage.setItem('access_token', access_token)
+
       await handleLoginSuccess(access_token, true)
       setShowAdminModal(false)
     } catch (err) {
       // Error is handled by interceptor or default error
+      console.error(err)
       toast.error('Неверный код')
       setLoading(false)
     }
