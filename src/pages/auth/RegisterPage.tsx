@@ -55,9 +55,13 @@ export default function RegisterPage() {
 
       // Auto-login after registration
       const loginRes = await authApi.login({ email, password })
+
+      const { access_token, is_admin } = loginRes.data
+      localStorage.setItem('access_token', access_token)
+
       const meRes = await authApi.getMe()
       const { setAuth } = useAuthStore.getState()
-      setAuth(loginRes.data.access_token, meRes.data, loginRes.data.is_admin)
+      setAuth(access_token, meRes.data, is_admin)
 
       navigate('/company-setup')
     } catch {
@@ -127,22 +131,20 @@ export default function RegisterPage() {
             <button
               type="button"
               onClick={() => setActivityType('declarant')}
-              className={`py-3 px-4 rounded-win border text-sm font-medium transition-all duration-150 ${
-                activityType === 'declarant'
+              className={`py-3 px-4 rounded-win border text-sm font-medium transition-all duration-150 ${activityType === 'declarant'
                   ? 'border-primary bg-primary-light text-primary'
                   : 'border-win-border bg-white text-win-text hover:border-gray-300'
-              }`}
+                }`}
             >
               Декларант
             </button>
             <button
               type="button"
               onClick={() => setActivityType('certification')}
-              className={`py-3 px-4 rounded-win border text-sm font-medium transition-all duration-150 ${
-                activityType === 'certification'
+              className={`py-3 px-4 rounded-win border text-sm font-medium transition-all duration-150 ${activityType === 'certification'
                   ? 'border-primary bg-primary-light text-primary'
                   : 'border-win-border bg-white text-win-text hover:border-gray-300'
-              }`}
+                }`}
             >
               Сертификация
             </button>
